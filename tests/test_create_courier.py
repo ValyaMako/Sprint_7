@@ -17,6 +17,7 @@ class TestCreateCourier:
     def test_create_courier_success(self, courier):
         _, _, auth_response, _ = courier
         assert auth_response.status_code == 200
+        assert "id" in auth_response.json()
 
     @allure.title('Проверяем, что нельзя создать двух одинаковых курьеров')
     def test_create_identical_courier_error(self, courier):
